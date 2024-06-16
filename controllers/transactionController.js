@@ -1,8 +1,8 @@
 const transactions = require('../data/transactions.json');
 
 exports.getTransactions = (req, res) => {
-  const { startDate, endDate } = req.query;
-  const filteredTransactions = transactions.filter(transaction => {
+    const { startDate, endDate } = req.query;
+    const filteredTransactions = transactions.filter(transaction => {
     const date = new Date(transaction.date).getTime();
     const isWithinDateRange = date >= new Date(startDate).getTime() && date <= new Date(endDate).getTime();
     const isValidStatus = ["COMPLETED", "IN PROGRESS", "REJECTED"].includes(transaction.status);
